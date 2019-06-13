@@ -33,5 +33,36 @@ var oneAway = function(str1, str2) {
 
 
 //tomorrow implement without using map
+// O(n) time and space because linearly look through the array of strings
+var oneAway2 = function(string1, string2) {
+    const diff = Math.abs(string1.length - string2.length);
+    if (diff > 1) {
+        return false;
+    }
+    string1 = string1.split('');
+    string2 = string2.split('');
+    const differentLengths = diff === 1 ? true : false;
+    const longer = string1.length >= string2.length ? string1 : string2;
+    const shorter = string1.length < string2.length ? string1 : string2;
+    let shortIdx = 0, longIdx = 0;
+    let diffFound = false;
+    while (shortIdx < shorter.length && longIdx < longer.length) {
+        if (shorter[shortIdx] !== longer[longIdx]) {
+            if (diffFound){
+                return false;
+            }
+            diffFound = true;
+            if (differentLenghts) {
+                longIdx++;
+            }
+        }
+        shortIdx++;
+        longIdx++;
+    }
+    return longIdx === longer.length;
+}
 
-console.log(oneAway('paae', 'pabe'));
+console.log(oneAway2('pae', 'pabe'));
+console.log(oneAway2('pace', 'pabe'));
+console.log(oneAway2('pabe', 'pae'));
+console.log(oneAway2('pab', 'pae'));
