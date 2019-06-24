@@ -28,7 +28,7 @@ var stringCompression = (value) => {
 var stringCompression2 = (value) => {
     let value2 = [];
     value = value.split('');
-    let count =  1;
+    let count =  0;
     for (let i = 0; i < value.length; i++) {
         count++;
         if (i < value.length && value[i] != value[i + 1]){
@@ -41,7 +41,21 @@ var stringCompression2 = (value) => {
 }
 
 //try to write function that figures out if it is worth doing string compression without making string
+var stringCompression3 = (value) => {
+    let countConsecutive = 0, compressedCount = 0;
+    for (let i=0; i < value.length-1; i++) {
+        countConsecutive++;
+        if (value[i] != value[i+1]) {
+            compressedCount += 1 + (countConsecutive + '').length;
+            countConseecutive = 0;
+        }
+    }
+    if (value.length < compressedCount){
+        return value;
+    }
+    return stringCompression2(value);
+}
 
-console.log(stringCompression2('aabcccccaaa'));
-console.log(stringCompression2('abcd'));
-console.log(stringCompression2('bbbaabbbbbcccddddddddz'));
+console.log(stringCompression3('aabcccccaaa'));
+console.log(stringCompression3('abcd'));
+console.log(stringCompression3('bbbaabbbbbcccddddddddz'));
