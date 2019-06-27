@@ -1,0 +1,19 @@
+{
+  "name": "cracking-the-coding-ingerview-ed.-6-solutions-js",
+  "version": "1.0.0",
+  "description": "Solutions to Gayle Laakmann McDowell's Cracking the Coding Interview in Javascript with time/space complexity and alternative approaches",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/21mooie/Cracking-the-Coding-Interview-ed.-6.git"
+  },
+  "author": "Muata Nkosi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/21mooie/Cracking-the-Coding-Interview-ed.-6/issues"
+  },
+  "homepage": "https://github.com/21mooie/Cracking-the-Coding-Interview-ed.-6#readme"
+}
