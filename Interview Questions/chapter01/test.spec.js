@@ -8,6 +8,6 @@ describe('Hello World Server ', () => {
         expect(1).toBeLessThan(2);
     });
     it('should not equal hello', () => {
-        expect(1).toBe(hello);
+        expect(1).not.toBe(hello);
     })
 });
