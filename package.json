@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/21mooie/Cracking-the-Coding-Interview-ed.-6/issues"
   },
-  "homepage": "https://github.com/21mooie/Cracking-the-Coding-Interview-ed.-6#readme"
+  "homepage": "https://github.com/21mooie/Cracking-the-Coding-Interview-ed.-6#readme",
+  "devDependencies": {
+    "jasmine": "^3.4.0"
+  }
 }
