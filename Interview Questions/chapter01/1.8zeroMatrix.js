@@ -30,30 +30,30 @@ var convertMatrix = (matrix, sums) => {
     return matrix;
 }
 
-
+// O(n^2) time complexity to search and convert matrix positions to zeroes. O(n) space complexity
 var zeroMatrix = (matrix) => {
     const sums = findZeroes(matrix);
     return convertMatrix(matrix, sums)
 }
-let originalMatrix = [[0,1,3],[4,5,6],[7,8,9]];
-console.log(zeroMatrix(originalMatrix));
 
 
-// describe('Zero Matrix ', () => {
-//     beforeEach(() => {
+describe('Zero Matrix ', () => {
+    beforeEach(() => {
         
-//     });
-//     it('should convert zeroes for matrix needing converting', () => {
-//         let originalMatrix = [[0,1,3],[4,5,6],[7,8,9]];
-//         expect(zeroMatrix(originalMatrix)).toEqual([[0,0,0],[0,5,6],[0,8,9]]);
-//     });
-//     it('should convert not convert zeroes if matrix does not have zeroes', () => {
-
-//     });
-//     it('should convert zeroes if matrix has edge zeroes', () => {
-
-//     });
-//     it('should handle empty matrix', () => {
-
-//     });
-// })
+    });
+    it('should convert zeroes for matrix needing converting', () => {
+        let originalMatrix = [[0,1,3],[4,5,6],[7,8,9]];
+        expect(zeroMatrix(originalMatrix)).toEqual([[0,0,0],[0,5,6],[0,8,9]]);
+    });
+    it('should convert not convert zeroes if matrix does not have zeroes', () => {
+        let originalMatrix = [[1,1,3],[4,5,6],[7,8,9]];
+        expect(zeroMatrix(originalMatrix)).toEqual(originalMatrix);
+    });
+    it('should convert zeroes if matrix has edge zeroes', () => {
+        let originalMatrix = [[0,1,3],[4,5,6],[7,8,0]];
+        expect(zeroMatrix(originalMatrix)).toEqual([[0,0,0],[0,5,0],[0,0,0]]);
+    });
+    it('should handle empty matrix', () => {
+        expect(zeroMatrix([])).toEqual([]);
+    });
+})
