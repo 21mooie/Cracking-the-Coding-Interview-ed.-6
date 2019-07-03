@@ -4,7 +4,10 @@
 //                 else delete
 //O(n) space O(n) time complexity
 
-var Node = require('./../utils/Node');
+var Node1 = function(data) {
+  this.next = null;
+  this.data = data;
+};
 
 var checkDups = function(head, node) {
     var currNode = head;
@@ -65,11 +68,11 @@ var printList = (head) => {
     }
 }
 
-var a = new Node('a');
-var b = new Node('b');
-var c = new Node('b');
-var d = new Node('a');
-var e = new Node('e');
+var a = new Node1('a');
+var b = new Node1('b');
+var c = new Node1('b');
+var d = new Node1('a');
+var e = new Node1('e');
 
 a.next = b;
 b.next = c;
