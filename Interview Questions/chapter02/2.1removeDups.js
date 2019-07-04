@@ -28,7 +28,7 @@ var printNode = function(head) {
       node = node.next;
     }
     console.log('end of linked list');
-  };
+};
   
 var removeDups = function(head) {
     var node = head;
