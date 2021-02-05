@@ -13,9 +13,11 @@ const Stack = function (data) {
         return this.data.length === 0;
     }
     this.showStack = function() {
+        const array = [];
         for (let i=this.data.length-1; i>=0; i--) {
-            console.log(`${this.data[i]}`);
+            array.push(this.data[i]);
         }
+        return array;
     }
 }
 
