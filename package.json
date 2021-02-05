@@ -4,7 +4,7 @@
   "description": "Solutions to Gayle Laakmann McDowell's Cracking the Coding Interview in Javascript with time/space complexity and alternative approaches",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/21mooie/Cracking-the-Coding-Interview-ed.-6#readme",
   "devDependencies": {
-    "jasmine": "^3.4.0"
+    "jasmine": "^3.6.4"
   }
 }

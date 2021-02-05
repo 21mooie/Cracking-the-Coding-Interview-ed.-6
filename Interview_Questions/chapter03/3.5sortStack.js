@@ -1,6 +1,13 @@
-const Stack = require('../utils/Stack');
+const Stack = require('../../utils/Stack');
 
+// Sort Stack: Write a program to sort a stack such that
+//  the smallest items are on the top. 
+// You can use an additional temporary stack, 
+// but you may not copy the elements into any other data structure 
+// (such as an array). 
+// The stack supports the following operations: push, pop, peek, and isEmpty.
 
+// O(n^2) time and O(n) space complexity
 function sortStack(sortStack){
     const tempStack = new Stack();
     while (!sortStack.isEmpty()) {
@@ -16,13 +23,4 @@ function sortStack(sortStack){
     return sortStack;
 }
 
-const stack = new Stack();
-stack.push(12);
-stack.push(1);
-stack.push(5);
-stack.push(45);
-stack.push(22);
-stack.push(19);
-stack.push(0);
-stack.push(15);
-sortStack(stack).showStack();
+module.exports = sortStack;
