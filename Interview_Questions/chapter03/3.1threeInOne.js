@@ -1,0 +1,1 @@
+array for three stacks
