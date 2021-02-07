@@ -35,24 +35,21 @@ const queueViaStacks = function() {
     this.showQueue = function() {
         let array = [];
         const newStack = new Stack();
-        if (this.stack1.isEmpty()) {
-            while(!this.stack2.isEmpty()) {
-                let val = this.stack2.pop();
-                newStack.push(val);
+        const stack = this.stack1.isEmpty() ? this.stack2 : this.stack1;
+        const isStack1Empty = this.stack1.isEmpty();
+        while (!stack.isEmpty()) {
+            let val = stack.pop();
+            newStack.push(val);
+            if (isStack1Empty) {
                 array.push(val);
             }
-            while (!newStack.isEmpty()) {
-                this.stack2.push(newStack.pop());
-            }
+        }
 
-        } else {
-            while(!this.stack1.isEmpty()) {
-                newStack.push(this.stack1.pop());
-            }
-            while(!newStack.isEmpty()) {
-                let val = newStack.pop();
+        while (!newStack.isEmpty()) {
+            let val = newStack.pop();
+            stack.push(val);
+            if (!isStack1Empty) {
                 array.push(val);
-                this.stack1.push(val)
             }
         }
         return array;
