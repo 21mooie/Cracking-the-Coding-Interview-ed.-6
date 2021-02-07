@@ -12,7 +12,7 @@ function sortStack(sortStack){
     const tempStack = new Stack();
     while (!sortStack.isEmpty()) {
         let temp = sortStack.pop();
-        while (tempStack.peek() !== undefined && temp < tempStack.peek()) {
+        while (tempStack.peek() !== null && temp < tempStack.peek()) {
             sortStack.push(tempStack.pop())
         }
         tempStack.push(temp);

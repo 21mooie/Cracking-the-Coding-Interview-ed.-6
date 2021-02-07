@@ -1,21 +1,32 @@
-const Stack = function (data) {
-    this.data = [];
+const Node = function(data, prev) {
+    this.data = data;
+    this.prev = prev;
+}
+
+const Stack = function () {
+    this.head = null;
     this.push = function(val) {
-        this.data.push(val);
+        const node = new Node(val, this.head);
+        this.head = node;
     }
     this.pop = function() {
-        return this.data.pop();
+        if (!this.head) return null;
+        const node = this.head;
+        this.head = this.head.prev;
+        return node.data;
     }
     this.peek = function() {
-        return this.data[this.data.length-1];
+        return this.head ? this.head.data : null;
     }
     this.isEmpty = function() {
-        return this.data.length === 0;
+        return this.head === null;
     }
     this.showStack = function() {
         const array = [];
-        for (let i=this.data.length-1; i>=0; i--) {
-            array.push(this.data[i]);
+        let head = this.head;
+        while (head) {
+            array.push(head.data);
+            head = head.prev;
         }
         return array;
     }
