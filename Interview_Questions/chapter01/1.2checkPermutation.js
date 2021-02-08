@@ -2,7 +2,7 @@
 
 
 // O(nlogn) because both functions are sorting the words before comparing
-var checkPermutation = function(x, y) {
+var checkPermutationSort = function(x, y) {
     x = x.split('').sort().join('');
     y = y.split('').sort().join('');
     return x === y;
@@ -10,7 +10,7 @@ var checkPermutation = function(x, y) {
 
 // O(n) time complexity since it iterates through the strings but O(n) space complexity as well since they are
 // then stored in another data structure
-var checkPermutation2 = function(x, y) {
+var checkPermutationMap = function(x, y) {
     let object = new Map();
     x = x.split('');
     x.forEach(element => {
@@ -44,7 +44,7 @@ var checkPermutation2 = function(x, y) {
 
 // may come back and write fourth version of method where instead of deleting the property, set it to a diferrent value
 // such as undefined
-var checkPermutation3 = function(x, y) {
+var checkPermutationObject = function(x, y) {
     let object = {};
     x = x.split('');
     x.forEach(element => {
@@ -73,8 +73,6 @@ var checkPermutation3 = function(x, y) {
     return Object.keys(object).length === 0 && object.constructor === Object
 }
 
-// console.log(checkPermutation('hello', 'hello'));
-
-// console.log(checkPermutation('hello', 'world'));
-
-console.log(checkPermutation3('hello', 'hoell'));
+exports.checkPermutationSort = checkPermutationSort;
+exports.checkPermutationMap = checkPermutationMap;
+exports.checkPermutationObject = checkPermutationObject;
