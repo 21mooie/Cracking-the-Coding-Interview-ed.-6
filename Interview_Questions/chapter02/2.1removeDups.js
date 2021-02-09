@@ -3,12 +3,6 @@
 //naive solution = if node not in map, push to map
 //                 else delete
 //O(n) space O(n) time complexity
-
-var Node1 = function(data) {
-  this.next = null;
-  this.data = data;
-};
-
 var checkDups = function(head, node) {
     var currNode = head;
     while (currNode !== node) {
@@ -19,16 +13,6 @@ var checkDups = function(head, node) {
     }
     return false;
   };
-
-var printNode = function(head) {
-    var node = head;
-    console.log('start of linked list');
-    while (node !== null) {
-      console.log(node.value);
-      node = node.next;
-    }
-    console.log('end of linked list');
-};
   
 var removeDups = function(head) {
     var node = head;
@@ -43,7 +27,7 @@ var removeDups = function(head) {
   };
   
 
-// O(n^2)
+// O(n^2) traverse list for each node visited and remove any dups
 var removeDups1 = (head) => {
     let headCopyFast = head;
     let headCopySlow = head;
@@ -61,23 +45,3 @@ var removeDups1 = (head) => {
     }
     return head;
 }
-var printList = (head) => {
-    while (head !== null) {
-        console.log(head.data, ' ==> ');
-        head = head.next;
-    }
-}
-
-var a = new Node1('a');
-var b = new Node1('b');
-var c = new Node1('b');
-var d = new Node1('a');
-var e = new Node1('e');
-
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
-
-removeDups(a);
-printNode(a);
