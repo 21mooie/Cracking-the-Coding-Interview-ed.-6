@@ -5,14 +5,13 @@
 // (Note: If implementing in Java, please use a character array so that you can perform this operation in place.)
 
 // O(n) time complexity and O(n) space complexity
-var URLify = function (str) {
-    let char_array = str.split('');
-    return char_array.map(x => {return x === ' ' ? '%20': x;}).join('');
+var URLifyJS = function (str) {
+    return str.split('').map(x => {return x === ' ' ? '%20': x;}).join('');
 }
 
 // O(n) time and space complexity
 // length variable is the length of the string to its last non space character
-var URLify2 = function (str, length) {
+var URLifyBackwards = function (str, length) {
     let str_array = str.split('');
     let index = str_array.length-1;
     for (let i = length - 1 ; i >= 0; i--) {
@@ -30,7 +29,26 @@ var URLify2 = function (str, length) {
     return str_array.join('');
 }
 
-console.log(URLify2('hel lo  ', 6));
-console.log(URLify2('hello', 5));
-console.log(URLify2('h e llo    ', 7));
-console.log(URLify2('Mr John Smith    ', 13))
+// O(n) time complexity with in place space complexity so no extra memory usage
+var URLify = function (charArray, length) {
+    if (charArray.length + 1 === length) return charArray;
+    let finalIdx = charArray.length-1;
+    let currIdx = length-1;
+    while (finalIdx > currIdx) {
+        if (charArray[currIdx] === ' ') {
+            charArray[finalIdx] = '0';
+            charArray[finalIdx-1] = '2';
+            charArray[finalIdx-2] = '%';
+            finalIdx -= 3;
+        } else {
+            charArray[finalIdx] = charArray[currIdx];
+            finalIdx -=1;
+        } 
+        currIdx-=1;
+    }
+    return charArray;
+}
+
+exports.URLifyJS = URLifyJS;
+exports.URLifyBackwards = URLifyBackwards;
+exports.URLify = URLify;
