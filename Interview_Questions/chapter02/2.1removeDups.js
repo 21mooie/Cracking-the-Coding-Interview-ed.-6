@@ -26,22 +26,21 @@ const removeDupsMap = (list) => {
   
 
 // O(n^2) traverse list for each node visited and remove any dups
-var removeDups1 = (head) => {
-    let headCopyFast = head;
-    let headCopySlow = head;
-    let headCopy = head;
-    headCopyFast = headCopyFast.next;
-    while(headCopy != null) {
-        while (headCopyFast != null) {
-            if (headCopyFast.data === headCopy.data) {
-                headCopySlow.next = headCopyFast.next;
-                headCopyFast = headCopyFast.next;
-            }
-            headCopySlow = headCopySlow.next;
-            headCopyFast = headCopyFast = headCopyFast.next;
-        }
+const removeDupsQuad = (list) => {
+  let iter = new Iterator(list);
+  let iterCheck = new Iterator(list);
+  while (iter.node !== null) {
+    iterCheck.setIterator(iter);
+    while(iterCheck.node !== null) {
+      if (iterCheck.peekNext() && iterCheck.peekNext().data === iter.getData()) {
+        iterCheck.setNext(iterCheck.peekNext().next);
+      }
+      iterCheck.getNext();
     }
-    return head;
-}
+    iter.getNext();
+  }
+  return list;
+};
 
 exports.removeDupsMap = removeDupsMap;
+exports.removeDupsQuad = removeDupsQuad;
