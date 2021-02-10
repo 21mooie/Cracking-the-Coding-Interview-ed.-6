@@ -1,5 +1,7 @@
 const LinkedList = require('../../utils/LinkedList');
 
+const { removeDupsMap } = require('../../Interview_Questions/chapter02/2.1removeDups');
+
 describe('Remove Duplicates', () => {
     let list;
     beforeEach(() => {
@@ -11,6 +13,6 @@ describe('Remove Duplicates', () => {
         list.add(3);
         list.add(1);
         list.add(3);
-        expect(removeDups(list).show()).toEqual([1,2,3]);
+        expect(removeDupsMap(list).show()).toEqual([1,2,3]);
     });
 });

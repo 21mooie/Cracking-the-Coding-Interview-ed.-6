@@ -8,6 +8,10 @@ Iterator.prototype.getNext = function() {
     }
 }
 
+Iterator.prototype.setNext = function(node) {
+    this.node.next = node;
+}
+
 Iterator.prototype.peekNext = function() {
     return this.node.next;
 }
@@ -18,6 +22,12 @@ Iterator.prototype.getData = function() {
 
 Iterator.prototype.setData = function(newData) {
     this.node.data = newData;
+}
+
+Iterator.prototype.setIterator = function(iterator) {
+    if (!iterator)
+        return null;
+    this.node = iterator.node;
 }
 
 module.exports = Iterator;

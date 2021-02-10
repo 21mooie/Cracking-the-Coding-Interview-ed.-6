@@ -1,30 +1,28 @@
+const Iterator = require('../../utils/Iterator');
+
 // Remove Dups: Write code to remove duplicates from an unsorted linked list.
 
 //naive solution = if node not in map, push to map
 //                 else delete
 //O(n) space O(n) time complexity
-var checkDups = function(head, node) {
-    var currNode = head;
-    while (currNode !== node) {
-      if (currNode.value === node.value) {
-        return true;
-      }
-      currNode = currNode.next;
+const removeDupsMap = (list) => {
+  const map = new Map();
+  const iter = new Iterator(list);
+  const iterTail = new Iterator(list);
+  map.set(iter.getData(), true);
+  iterTail.getNext();
+  while (iterTail.node !== null) {
+    if (map.has(iterTail.getData())) {
+      iter.setNext(iterTail.peekNext());
+      iterTail.getNext();
+    } else {
+      map.set(iterTail.getData(), true);
+      iter.getNext();
+      iterTail.getNext();
     }
-    return false;
-  };
-  
-var removeDups = function(head) {
-    var node = head;
-    while (node !== null) {
-      if (node.next !== null && checkDups(head, node.next)) {
-        node.next = node.next.next;
-      } else {
-        node = node.next;
-      }
-    }
-    return head;
-  };
+  }
+  return list;
+};
   
 
 // O(n^2) traverse list for each node visited and remove any dups
@@ -45,3 +43,5 @@ var removeDups1 = (head) => {
     }
     return head;
 }
+
+exports.removeDupsMap = removeDupsMap;
