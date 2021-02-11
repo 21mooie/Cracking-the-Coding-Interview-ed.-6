@@ -3,7 +3,8 @@ const Iterator = require('../../utils/Iterator');
 const { 
     kthToLastRecursive,
     kthToLastStack,
-    kthToLastIter
+    kthToLastIter,
+    kthToLastTwoPointers
 } = require('../../Interview_Questions/chapter02/2.2kthToLast');
 
 describe('Kth to last', () => {
@@ -96,8 +97,40 @@ describe('Kth to last', () => {
             expect(kthToLastIter(iter, 8)).toEqual(new Error('k > length of list'));
         });
 
-        it('should return Error if K < 0.', () => {
+        it('should return error if k < 0.', () => {
             expect(kthToLastIter(iter, -3)).toEqual(new Error('k < 0'));
+        });
+        
+    });
+
+    describe('two pointers', () => {
+        let list, iter;
+        beforeEach(() => {
+            list = new LinkedList();
+            list.add(1);
+            list.add(45);
+            list.add(6);
+            list.add(13);
+            iter = new Iterator(list);
+        });
+        it('should return the kth to last element of a linked list.', () => {
+            expect(kthToLastTwoPointers(iter, 2)).toEqual(45);
+        });
+
+        it('should return the last element of a linked list.', () => {
+            expect(kthToLastTwoPointers(iter, 0)).toEqual(13);
+        });
+
+        it('should return the kth to last element of a linked list.', () => {
+            expect(kthToLastTwoPointers(iter, 3)).toEqual(1);
+        });
+
+        it('should return error if k > length of list.', () => {      
+            expect(kthToLastTwoPointers(iter, 8)).toEqual(new Error('k > length of list'));
+        });
+
+        it('should return error if k < 0.', () => {
+            expect(kthToLastTwoPointers(iter, -3)).toEqual(new Error('k < 0'));
         });
         
     });

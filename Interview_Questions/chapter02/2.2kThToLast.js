@@ -41,7 +41,6 @@ const kthToLastRecursive = (node, k, curr = -1) => {
     return result ? result : new Error('k > length of list');
 };
 
-// Optimal
 // O(2n) iterative solution
 const kthToLastIter = (iter, k ) => {
     if (k < 0)
@@ -61,6 +60,27 @@ const kthToLastIter = (iter, k ) => {
     return iter.getData();
 }
 
+//Optimal
+//O(n) iterative solution
+const kthToLastTwoPointers = (iter, k) => {
+    if (k < 0)
+        return new Error('k < 0');
+    const endIter = new Iterator();
+    endIter.setIterator(iter);
+    for (let i =0; i< k; i++) {
+        if (endIter.peekNext())
+            endIter.getNext();
+        else
+            return new Error('k > length of list');
+    }
+    while (endIter.peekNext()) {
+        endIter.getNext();
+        iter.getNext();
+    }
+    return iter.getData();
+}
+
 exports.kthToLastRecursive = kthToLastRecursive;
 exports.kthToLastStack = kthToLastStack;
 exports.kthToLastIter = kthToLastIter;
+exports.kthToLastTwoPointers = kthToLastTwoPointers;
