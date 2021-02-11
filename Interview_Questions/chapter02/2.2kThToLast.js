@@ -30,17 +30,23 @@ var kthToLastLinear = (head, k ) => {
     return head.data;
 }
 
-var a = new LinkedList(1);
-var b = new LinkedList(2);
-var c = new LinkedList(3);
-var d = new LinkedList(4);
-var e = new LinkedList(5);
+//O(n) recursive solution
+const kthToLastRecursive = (node, k, curr = -1) => {
+    let answer;
+    function recurse(node, k) {
+        if (k<0) {
+            return new Error('K < 0');
+        }
+        if (node.next) {
+            recurse(node.next, k);
+        }
+        curr+=1;
+        if (curr === k) {
+            answer = node.data;
+        }
+        return answer;
+    }
+    return recurse(node, k);
+};
 
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
-
-console.log(kthToLastLinear(a, 0));
-console.log(kthToLastLinear(a, 2));
-
+exports.kthToLastRecursive = kthToLastRecursive;

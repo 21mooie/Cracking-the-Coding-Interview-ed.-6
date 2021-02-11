@@ -1,3 +1,5 @@
+const LinkedList = require('./LinkedList');
+
 const Iterator = function(LinkedList) {
     this.node = LinkedList.getHead();
 }
