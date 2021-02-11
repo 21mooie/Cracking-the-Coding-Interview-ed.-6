@@ -1,10 +1,6 @@
 // Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
 
-var LinkedList = function(data) {
-    this.next = null;
-    this.data = data;
-}
-
+// O(n) iterative solution using a stack
 var kthToLast = (head, k) => {
     let stack = [];
     while(head != null){
@@ -35,7 +31,7 @@ const kthToLastRecursive = (node, k, curr = -1) => {
     let answer;
     function recurse(node, k) {
         if (k<0) {
-            return new Error('K < 0');
+            return new Error('k < 0');
         }
         if (node.next) {
             recurse(node.next, k);
@@ -46,7 +42,8 @@ const kthToLastRecursive = (node, k, curr = -1) => {
         }
         return answer;
     }
-    return recurse(node, k);
+    const result = recurse(node, k);
+    return result ? result : new Error('k > length of list');
 };
 
 exports.kthToLastRecursive = kthToLastRecursive;
