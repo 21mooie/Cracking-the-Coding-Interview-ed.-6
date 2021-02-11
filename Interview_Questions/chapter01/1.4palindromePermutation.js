@@ -1,55 +1,60 @@
 // Palindrome Permutation: Given a string, write a function to check if it is a permutation of a palindrome. 
 // A palindrome is a word or phrase that is the same forwards and backwards. 
-// A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
+// A permutation is a rearrangement of letters.The palindrome does not need to be limited to just dictionary words.
+// EXAMPLE
+// Input: Tact Coa
+// Output: True (permutations: "taco cat". "atco cta". etc.)
 
-// O(n) time complexity O(n) space complexity
-var palindromePermutation = function(x) {
-    let map = new Map();
-    x = x.toLowerCase().split('');
-    x.forEach(element => {
-        if (element !== ' ') {
-            if (map.has(element)){
-                map.delete(element);
-            }
-            else {
-                map.set(element, 0);
-            }
-        }
-    });
-    return map.size === 0 || map.size === 1;
+// O(nlogn) sort and then search adjacent chars for identicality
+const palindromePermSort = function(string) {
+  string = string.toLowerCase().split('').filter(i => i !== ' ').sort().join('');
+  let oddCharPresent = true;
+  for (let i=0; i<string.length-1; i+=2) {
+    if (string[i] !== string[i+1]) {
+      if (oddCharPresent) {
+        oddCharPresent = false;
+        i -= 1;
+      } else {
+        return false;
+      }
+    }
+  }
+  return true;
 }
 
-var palinPerm = function(string) {
-    // create object literal to store charcount
-    var chars = {};
-    var currChar;
-    var mulligan = false;
-    var isPerm = true;
-    // pump characters in, spaces not counted, all lowercase
-    string.split('').forEach((char) => {
-      if (char !== ' ') {
-        currChar = char.toLowerCase();
-        if (chars[currChar] === undefined) {
-          chars[currChar] = 0;
-        }
-        chars[currChar]++;
-      }
-    });
-    // check that all chars are even count, except for one exception
-    Object.keys(chars).forEach((char) => {
-      if (chars[char] % 2 > 0) {
-      // if more than one exception, return false
-        if (mulligan) {
-          isPerm = false; // return in a forEach statment doesn't flow out of function scope
-        } else {
-          mulligan = true;
-        }
-      }
-    });
-    // if not return true
-    return isPerm;
-  };
+// O(n) time complexity O(n) space complexity
+const palindromePermMap = function(string) {
+  string = string.toLowerCase().split('').filter(i => i !== ' ').join('');
+  const map = new Map();
+  for (let char of string) {
+    if (map.get(char)) {
+      map.delete(char);
+    } else {
+      map.set(char, 1);
+    }
+  }
+  return map.size <= 1 ? true : false;
+}
 
-console.log(palindromePermutation('Tact Coa'))
-console.log(palindromePermutation('hello'))
-console.log(palindromePermutation('racecar'))
+// O(n) time complexity O(n) space but less kind of
+// not real bitwise version, so need to revisit to implement forreal
+const palindromePermBit = function(string) {
+  string = string.toLowerCase().split('').filter(i => i !== ' ').join('');
+  const bitArray = new Array(26).fill(false);
+  let oddCount = 0;
+  for (let char of string) {
+    const idx = char.charCodeAt(0)-97;
+    if (bitArray[idx]) {
+      bitArray[idx] = false;
+      oddCount -= 1;
+    } else {
+      bitArray[idx] = true;
+      oddCount += 1;
+    }
+  }
+  return oddCount <= 1;
+}
+
+exports.palindromePermSort = palindromePermSort;
+exports.palindromePermMap = palindromePermMap;
+exports.palindromePermBit = palindromePermBit;
