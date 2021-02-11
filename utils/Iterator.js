@@ -1,7 +1,11 @@
 const LinkedList = require('./LinkedList');
 
 const Iterator = function(LinkedList) {
-    this.node = LinkedList.getHead();
+    if (!LinkedList) {
+        this.node = null
+    } else {
+        this.node = LinkedList.getHead();
+    }
 }
 
 Iterator.prototype.getNext = function() {
@@ -30,6 +34,10 @@ Iterator.prototype.setIterator = function(iterator) {
     if (!iterator)
         return null;
     this.node = iterator.node;
+}
+
+Iterator.prototype.isNull = function() {
+    return this.node === null;
 }
 
 module.exports = Iterator;

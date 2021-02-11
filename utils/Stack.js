@@ -1,12 +1,9 @@
-const Node = function(data, prev) {
-    this.data = data;
-    this.prev = prev;
-}
+const { PrevNode } = require('./Node');
 
 const Stack = function () {
     this.head = null;
     this.push = function(val) {
-        const node = new Node(val, this.head);
+        const node = new PrevNode(val, this.head);
         this.head = node;
     }
     this.pop = function() {

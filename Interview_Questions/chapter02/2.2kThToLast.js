@@ -1,29 +1,24 @@
+const Iterator = require('../../utils/Iterator');
+const Stack = require('../../utils/Stack');
 // Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
 
-// O(n) iterative solution using a stack
-var kthToLast = (head, k) => {
-    let stack = [];
-    while(head != null){
-        stack.push(head.data);
-        head = head.next;
+// O(n) iterative solution using a stack with O(n) storage
+var kthToLastStack = (iter, k) => {
+    if (k < 0)
+        return new Error('k < 0');
+    const stack = new Stack();
+    while(!iter.isNull()) {
+        stack.push(iter.getData());
+        iter.getNext();
     }
-    while(k > 0 && stack.length > 1) {
-        stack.pop();
-        k--;
+    for (let i=0; i<k; i++){
+        if (stack.isEmpty()) {
+            return new Error('k > length of list');
+        } else {
+            stack.pop();
+        }
     }
-    return stack.pop();
-}
-
-var kthToLastLinear = (head, k ) => {
-    let headCopy = head;
-    for (let i = 0; i < k; i++){
-        headCopy = headCopy.next;
-    }
-    while(headCopy.next) {
-        headCopy = headCopy.next;
-        head = head.next;
-    }
-    return head.data;
+    return stack.peek();
 }
 
 //O(n) recursive solution
@@ -46,4 +41,26 @@ const kthToLastRecursive = (node, k, curr = -1) => {
     return result ? result : new Error('k > length of list');
 };
 
+// Optimal
+// O(2n) iterative solution
+const kthToLastIter = (iter, k ) => {
+    if (k < 0)
+        return new Error('k < 0');
+    let listSize = 0, endFinder = new Iterator();
+    endFinder.setIterator(iter);
+    while(!endFinder.isNull()) {
+        listSize += 1;
+        endFinder.getNext();
+    }
+    if (k >= listSize) {
+        return new Error('k > length of list');
+    }
+    for (let i=0; i<listSize-(k+1); i++) {
+        iter.getNext();
+    }
+    return iter.getData();
+}
+
 exports.kthToLastRecursive = kthToLastRecursive;
+exports.kthToLastStack = kthToLastStack;
+exports.kthToLastIter = kthToLastIter;

@@ -7,5 +7,11 @@ const NextNode = function(data, next) {
     this.next = next;
 }
 
+const PrevNode = function(data, prev) {
+    Node.call(this, data);
+    this.prev = prev;
+}
+
 exports.Node = Node;
 exports.NextNode = NextNode;
+exports.PrevNode = PrevNode;
