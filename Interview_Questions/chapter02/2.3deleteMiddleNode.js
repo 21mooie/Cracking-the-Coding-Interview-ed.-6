@@ -1,25 +1,33 @@
-var LinkedList = require('../utils/LinkedList');
-var printList = require('../utils/printList');
+const Iterator = require('../../utils/Iterator');
+const LinkedList = require('../../utils/LinkedList');
 
-var deleteMiddleNode = (c) => {
-    let middle = c;
-    middle.data = middle.next.data;
-    middle.next = middle.next.next;
+
+// Delete Middle Node: Implement an algorithm to delete a node in the middle 
+// (ie., any node but the first and last node, not necessarily the exact middle) of a singly linked list, given only access to that node.
+// EXAMPLE
+// Input: the node c from the linked list a- >b- >c - >d - >e- >f
+// Result: nothing is returned, but the new linked list looks like a->b->d->e->f
+
+// O(1) solution
+// Unable to solve if node to be deleted is at end of Linked List
+// I added a way to complete this since I was passing in the list to function already
+const deleteMiddleNode = (list, iter) => {
+    const newIter = new Iterator();
+    newIter.setIterator(iter);
+    newIter.getNext();
+    if (newIter.hasNode()) {
+        const data = newIter.getData();
+        newIter.getNext();
+        iter.setData(data);
+        iter.setNext(newIter.getCurrNode());
+    } else {
+        let currNode = list.getHead();
+        while (currNode !== iter.getCurrNode()) {
+            currNode = currNode.next;
+        }
+        currNode.next = null;
+    }
+    return list;
 }
 
-let a = new LinkedList('1');
-let b = new LinkedList('2');
-let c = new LinkedList('3');
-let d = new LinkedList('4');
-let e = new LinkedList('5');
-
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
-
-printList(a);
-console.log('\n');
-deleteMiddleNode(c);
-printList(a);
-
+module.exports = deleteMiddleNode;

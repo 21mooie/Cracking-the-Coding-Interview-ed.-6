@@ -36,8 +36,16 @@ Iterator.prototype.setIterator = function(iterator) {
     this.node = iterator.node;
 }
 
+Iterator.prototype.hasNode = function() {
+    return this.node !== null;
+}
+
 Iterator.prototype.isNull = function() {
     return this.node === null;
+}
+
+Iterator.prototype.getCurrNode = function() {
+    return this.node;
 }
 
 module.exports = Iterator;

@@ -1,7 +1,7 @@
 const {NextNode} = require('./Node');
 
-const LinkedList = function () {
-    this.head = null;
+const LinkedList = function (node = null) {
+    this.head = node;
 }
 
 LinkedList.prototype.add = function(val) {
