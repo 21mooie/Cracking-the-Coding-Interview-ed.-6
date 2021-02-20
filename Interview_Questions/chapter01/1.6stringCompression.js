@@ -3,28 +3,7 @@
 // If the "compressed" string would not become smaller than the original string, 
 // your method should return the original string. You can assume the string has only uppercase and lowercase letters (a - z).
 
-// O(n) time and space complexity
-var stringCompression = (value) => {
-    let value2 = [];
-    value = value.split('');
-    let last = value[0], count =  1;
-    for (let i = 1; i < value.length; i++) {
-        if (value[i] === last){
-            count++;
-        }
-        else {
-            value2.push(last);
-            value2.push(count);
-            last = value[i];
-            count = 1;
-        }
-    }
-    value2.push(last);
-    value2.push(count);
-    return value2.length < value.length ?  value2.join('') : value.join('');
-}
-
-// shorter way to do it
+// Implementation with for loop
 var stringCompression2 = (value) => {
     let value2 = [];
     value = value.split('');
@@ -40,22 +19,42 @@ var stringCompression2 = (value) => {
     return value2.length < value.length ?  value2.join('') : value.join('');
 }
 
-//try to write function that figures out if it is worth doing string compression without making string
-var stringCompression3 = (value) => {
-    let countConsecutive = 0, compressedCount = 0;
-    for (let i=0; i < value.length-1; i++) {
-        countConsecutive++;
-        if (value[i] != value[i+1]) {
-            compressedCount += 1 + (countConsecutive + '').length;
-            countConseecutive = 0;
+// Implementation O(n)
+const stringComp = string => {
+    let ans = '', idx = 0;
+    while (idx < string.length) {
+        let sameCharIdx = idx;
+        let count = 1;
+        while (sameCharIdx < string.length && string[sameCharIdx] === string[idx]) {
+            sameCharIdx++;
+            count++;
         }
+        ans += `${string[idx]}${count-1}`;
+        idx=sameCharIdx;
     }
-    if (value.length < compressedCount){
-        return value;
-    }
-    return stringCompression2(value);
+    return ans.length < string.length ? ans : string;
 }
 
-console.log(stringCompression3('aabcccccaaa'));
-console.log(stringCompression3('abcd'));
-console.log(stringCompression3('bbbaabbbbbcccddddddddz'));
+// Get count of compression string first before making. Will require an additional
+// iteration through string
+const countCompress = string => {
+    let compressed = 0, count = 0;
+    for (let i = 0; i < string.length; i++) {
+        count++;
+        if (string[i] !== string[i+1]) {
+            compressed += 1 + count.toString().length;
+            count = 0;
+        }
+    }
+    return compressed;
+}
+
+
+const decideToCompress = string => {
+    if (countCompress(string) < string.length) {
+        return stringComp(string);
+    }
+    return string;
+}
+
+module.exports = stringComp;
