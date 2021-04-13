@@ -27,6 +27,19 @@ describe('Sum Lists', () => {
             let list3 = sumListsReverse(list1, list2);
             expect(list3.show()).toEqual([2,1,3,4]);
         });
+        
+        it('should add numbers reversed as linked lists that are will result in a longer list.', () => {
+            let list1 = new LinkedList();
+            let list2 = new LinkedList();
+            list1.add(8);
+            list1.add(7);
+            list1.add(9);
+            list2.add(5);
+            list2.add(8);
+            list2.add(6);
+            let list3 = sumListsReverse(list1, list2);
+            expect(list3.show()).toEqual([3,6,6,1]);
+        });
     });
     describe('Forward', () => {
         it('should add numbers reversed as linked lists.', () => {
@@ -53,6 +66,19 @@ describe('Sum Lists', () => {
             list2.add(5);
             let list3 = sumLists(list1, list2);
             expect(list3.show()).toEqual([4,3,1,2]);
+        });
+
+        it('should add numbers as linked lists that are will result in a longer list.', () => {
+            let list1 = new LinkedList();
+            let list2 = new LinkedList();
+            list1.add(9);
+            list1.add(7);
+            list1.add(8);
+            list2.add(6);
+            list2.add(8);
+            list2.add(5);
+            let list3 = sumLists(list1, list2);
+            expect(list3.show()).toEqual([1,6,6,3]);
         });
     });
 });

@@ -54,6 +54,9 @@ const sumLists = (list1, list2) => {
         curr = curr * Math.pow(10, exp);
         acc += curr;
     }
+    while (Math.floor(acc/Math.pow(10, exp)) > 10) {
+        exp+=1;
+    }
     let list3 = new LinkedList();
     while (acc > 0) {
         list3.add(Math.floor(acc/Math.pow(10, exp)));
