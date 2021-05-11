@@ -8,22 +8,23 @@ const queueViaStacks = function() {
     this.stack2 = new Stack();
 
     this.enqueue = function(val) {
-        while (!this.stack2.isEmpty()) {
-            this.stack1.push(this.stack2.pop());
-        }
         this.stack1.push(val);
     }
 
     this.dequeue = function() {
-        while(!this.stack1.isEmpty()) {
-            this.stack2.push(this.stack1.pop());
+        if (this.stack2.isEmpty()) {
+            while(!this.stack1.isEmpty()) {
+                this.stack2.push(this.stack1.pop());
+            }
         }
         return this.stack2.pop();
     }
 
     this.peek = function() {
-        while(!this.stack1.isEmpty()) {
-            this.stack2.push(this.stack1.pop());
+        if (this.stack2.isEmpty()) {
+            while(!this.stack1.isEmpty()) {
+                this.stack2.push(this.stack1.pop());
+            }
         }
         return this.stack2.peek();
     }

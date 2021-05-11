@@ -37,4 +37,15 @@ describe('Queue via stacks', () => {
         queue.dequeue();
         expect(queue.showQueue()).toEqual([2,7]);
     });
+
+    it('should implement a queue by adding and removing while not shifting unnecesarrily.', () => {
+        queue.enqueue(1);
+        queue.enqueue(4);
+        queue.enqueue(2);
+        queue.enqueue(7);
+        queue.dequeue();
+        queue.dequeue();
+        queue.enqueue(5);
+        expect(queue.peek()).toEqual(2);
+    });
 });
