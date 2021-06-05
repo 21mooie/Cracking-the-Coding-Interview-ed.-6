@@ -12,6 +12,21 @@ const PrevNode = function(data, prev) {
     this.prev = prev;
 }
 
+const TreeNode = function(data, leftChild, rightChild){
+    Node.call(this, data);
+    this.left = leftChild;
+    this.right = rightChild;
+
+    function setLeftChild(leftChild) {
+        this.left = leftChild;
+    }
+
+    function setRightChild(rightChild) {
+        this.right = rightChild;
+    }
+}
+
 exports.Node = Node;
 exports.NextNode = NextNode;
 exports.PrevNode = PrevNode;
+exports.TreeNode = TreeNode;
