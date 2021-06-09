@@ -22,6 +22,10 @@ Iterator.prototype.peekNext = function() {
     return this.node.next;
 }
 
+Iterator.prototype.hasNext = function() {
+    return this.node.next !== null;
+}
+
 Iterator.prototype.getData = function() {
     return this.node ? this.node.data : null;
 }
