@@ -17,7 +17,7 @@ describe('routeBetweenNodes', () => {
                 )
             )
         );
-        goal.setLeftChild(new TreeNode(10, null, null));
+        goal.left = new TreeNode(10, null, null);
         expect(routeBetweenNodes(root, goal)).toEqual(true);
     });
 

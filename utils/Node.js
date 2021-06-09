@@ -18,14 +18,6 @@ const TreeNode = function(data, leftChild = null, rightChild = null){
     this.right = rightChild;
 }
 
-TreeNode.prototype.setLeftChild = function (leftChild) {
-    this.left = leftChild;
-}
-
-TreeNode.prototype.setRightChild = function (rightChild) {
-    this.right = rightChild;
-}
-
 exports.Node = Node;
 exports.NextNode = NextNode;
 exports.PrevNode = PrevNode;
