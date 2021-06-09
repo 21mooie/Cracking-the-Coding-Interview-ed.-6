@@ -12,18 +12,18 @@ const PrevNode = function(data, prev) {
     this.prev = prev;
 }
 
-const TreeNode = function(data, leftChild, rightChild){
+const TreeNode = function(data, leftChild = null, rightChild = null){
     Node.call(this, data);
     this.left = leftChild;
     this.right = rightChild;
+}
 
-    function setLeftChild(leftChild) {
-        this.left = leftChild;
-    }
+TreeNode.prototype.setLeftChild = function (leftChild) {
+    this.left = leftChild;
+}
 
-    function setRightChild(rightChild) {
-        this.right = rightChild;
-    }
+TreeNode.prototype.setRightChild = function (rightChild) {
+    this.right = rightChild;
 }
 
 exports.Node = Node;
