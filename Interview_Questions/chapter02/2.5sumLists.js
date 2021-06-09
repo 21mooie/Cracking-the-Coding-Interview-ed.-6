@@ -1,5 +1,6 @@
 const Iterator = require('../../utils/Iterator');
 const LinkedList = require('../../utils/LinkedList');
+const { NextNode } = require('../../utils/Node');
 const Stack = require('../../utils/Stack');
 
 // Sum Lists: You have two numbers represented by a linked list, 
@@ -66,6 +67,30 @@ const sumLists = (list1, list2) => {
     return list3;
 }
 
+const sumListsRecursive = (list1, list2) => {
+    function sumListsHelper(list1, list2, carry){
+        if(!list1 && !list2 && carry===0){
+            return null;
+        }
+        let curr = carry;
+        if (list1) {
+            curr += list1.data;
+            list1  = list1.next;
+        }
+        if (list2) {
+            curr += list2.data;
+            list2 = list2.next;
+        }
+        carry = Math.floor(curr/10);
+        curr = curr % 10;
+        let list3 = new NextNode(curr);
+        list3.next = sumListsHelper(list1, list2, carry);
+        return list3;
+    }
+    return sumListsHelper(list1, list2, 0);
+}
+
 
 exports.sumListsReverse = sumListsReverse;
 exports.sumLists = sumLists;
+exports.sumListsRecursive = sumListsRecursive;

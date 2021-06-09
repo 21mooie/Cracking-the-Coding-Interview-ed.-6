@@ -1,5 +1,8 @@
 const LinkedList = require("../../utils/LinkedList");
-const { sumLists, sumListsReverse } = require('../../Interview_Questions/chapter02/2.5sumLists');
+const { sumLists, sumListsReverse, sumListsRecursive } = require('../../Interview_Questions/chapter02/2.5sumLists');
+const { NextNode } = require("../../utils/Node");
+const linkedListTraversal = require('../../utils/linkedListTraversal');
+
 describe('Sum Lists', () => {
     describe('Reverse', () => {
         it('should add numbers reversed as linked lists.', () => {
@@ -41,6 +44,7 @@ describe('Sum Lists', () => {
             expect(list3.show()).toEqual([3,6,6,1]);
         });
     });
+
     describe('Forward', () => {
         it('should add numbers reversed as linked lists.', () => {
             let list1 = new LinkedList();
@@ -79,6 +83,30 @@ describe('Sum Lists', () => {
             list2.add(5);
             let list3 = sumLists(list1, list2);
             expect(list3.show()).toEqual([1,6,6,3]);
+        });
+    });
+
+    describe('recursive', () => {
+        it('should add numbers reversed as linked lists.', () => {
+            let list1 = new NextNode(2);
+            let list2 = new NextNode(3);
+            expect(linkedListTraversal(sumListsRecursive(list1, list2))).toEqual([5]);
+        });
+
+        it('should add numbers reversed as linked lists with extra node.', () => {
+            let list1 = new NextNode(7);
+            let list2 = new NextNode(4);
+            expect(linkedListTraversal(sumListsRecursive(list1, list2))).toEqual([1,1]);
+        });
+
+        it('should add numbers reversed as linked lists from question.', () => {
+            let list1 = new NextNode(7);
+            list1.next = new NextNode(1);
+            list1.next.next = new NextNode(6);
+            let list2 = new NextNode(5);
+            list2.next = new NextNode(9);
+            list2.next.next = new NextNode(2);
+            expect(linkedListTraversal(sumListsRecursive(list1, list2))).toEqual([2,1,9]);
         });
     });
 });

@@ -2,7 +2,7 @@ const Node = function(data) {
     this.data = data;
 }
 
-const NextNode = function(data, next) {
+const NextNode = function(data, next=null) {
     Node.call(this, data);
     this.next = next;
 }
