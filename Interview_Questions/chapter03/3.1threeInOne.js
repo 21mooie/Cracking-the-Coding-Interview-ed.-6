@@ -51,9 +51,13 @@ class ThreeStack {
     increaseStack(stackNum){
         switch(stackNum){
             case 0:
+                //pushing to stack 0 can cause stack1 to overflow to the point where stack 2 also needs to increment. need to handle that case
             case 1:
                 let newTop = this.stackIdx[stackNum].top+1;
                 this.values.splice(newTop, 0, null);
+                if(this.stackIdx[stackNum+1].bottom===this.stackIdx[stackNum+1].top){
+                    this.stackIdx[stackNum+1].top+=1;
+                }
                 this.stackIdx[stackNum+1].bottom+=1;
                 break;
             case 2:
@@ -62,6 +66,22 @@ class ThreeStack {
             default:
                 break;
         }
+    }
+
+    getStackTop(stackNum){
+        return this.stackIdx[stackNum].top;
+    }
+
+    setStackTop(stackNum, val){
+        this.stackIdx[stackNum].top+=val;
+    }
+
+    getStackBottom(stackNum){
+        return this.stackIdx[stackNum].bottom;
+    }
+
+    isEmpty(stackNum){
+        return this.getStackTop(stackNum) === this.getStackBottom(stackNum);
     }
 
     push(stackNum, val){
@@ -78,6 +98,18 @@ class ThreeStack {
         }
         this.values[this.stackIdx[stackNum].top] = val;
         
+    }
+
+    pop(stackNum) {
+        //check if stack is empty
+        // if not then remove top element and return 
+        if(this.isEmpty(stackNum)){
+            return 'STACK EMPTY';
+        }
+        let val = this.values[this.getStackTop(stackNum)];
+        this.values[this.getStackTop(stackNum)] = null;
+        this.setStackTop(stackNum, -1);
+        return val;
     }
 }
 
