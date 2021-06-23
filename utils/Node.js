@@ -18,7 +18,13 @@ const TreeNode = function(data, leftChild = null, rightChild = null){
     this.right = rightChild;
 }
 
+const TreeNodeP = function(data, leftChild = null, rightChild = null, parent = null){
+    TreeNode.call(this, data, leftChild, rightChild);
+    this.parent = parent;
+}
+
 exports.Node = Node;
 exports.NextNode = NextNode;
 exports.PrevNode = PrevNode;
 exports.TreeNode = TreeNode;
+exports.TreeNodeP = TreeNodeP;
