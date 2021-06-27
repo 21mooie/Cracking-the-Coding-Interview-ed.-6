@@ -8,7 +8,7 @@ const successor = (start) => {
             start = parent;
             parent = parent.parent;
         }
-        return parent;
+        return parent.data;
     } else {
         start = start.right;
         while(start.left) {
