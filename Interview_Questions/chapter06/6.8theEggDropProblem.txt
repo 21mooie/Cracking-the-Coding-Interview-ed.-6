@@ -1,0 +1,7 @@
+The Egg Drop Problem: There is a building of 100 floors.
+If an egg drops from the Nth floor or above, it will break.
+If it's dropped from any floor below, it will not break. You're given two eggs.
+Find N, while minimizing the number of drops for the worst case.
+
+This is a dynamic programming problem. You must balance the question for 
+the worst case. x+(x-1)+(x-2)....+1 = 100. This means x is about 13.95. Through logic we can see going up by 14, then 13, then 12, is the easiest and quickest way to get the number of steps we want.c
