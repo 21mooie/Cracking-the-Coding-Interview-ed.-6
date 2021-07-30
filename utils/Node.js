@@ -23,8 +23,14 @@ const TreeNodeP = function(data, leftChild = null, rightChild = null, parent = n
     this.parent = parent;
 }
 
+const GraphNode = function(data, neighbors = null){
+    Node.call(this, data);
+    this.neighbors = neighbors;
+}
+
 exports.Node = Node;
 exports.NextNode = NextNode;
 exports.PrevNode = PrevNode;
 exports.TreeNode = TreeNode;
 exports.TreeNodeP = TreeNodeP;
+exports.GraphNode = GraphNode;

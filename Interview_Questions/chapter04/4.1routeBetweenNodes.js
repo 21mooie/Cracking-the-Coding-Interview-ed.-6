@@ -3,18 +3,28 @@
 
 var routeBetweenNodes = (root, goal) => {
     let bfs = [root];
+    let level = 0;
+    const visited = {};
     let result = false;
+    let buffer = [];
     while (bfs.length > 0){
         let top = bfs.shift();
         if (top.data === goal.data){
             result = true;
             break;
         }
-        if (top.left){
-            bfs.push(top.left);
+        if(visited[top.data] === undefined){
+            visited[top.data] = level;
+            if(top.neighbors){
+                for (let node of top.neighbors){
+                    buffer.push(node);
+                }
+            }
         }
-        if (top.right){
-            bfs.push(top.right);
+        if(bfs.length === 0){
+            level++;
+            bfs = buffer;
+            buffer = [];
         }
     }
     return result;
