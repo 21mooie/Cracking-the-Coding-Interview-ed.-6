@@ -19,4 +19,22 @@ const magicIndexDistict = (array) => {
     return false;
 };
 
-module.exports = magicIndexDistict;
+const magicIndex = (array, left, right) => {
+    if(left > right){
+        return false;
+    }
+    let mid = Math.floor((left+right)/2);
+    if(array[mid] === mid){
+        return mid;
+    }
+    let leftIdx = Math.min(mid-1, array[mid]);
+    let lVal = magicIndex(array, left, leftIdx);
+    if(lVal){
+        return lVal;
+    }
+    let rightIdx = Math.max(mid+1, array[mid]);
+    let rVal = magicIndex(array, rightIdx, right);
+    return rVal;
+};
+
+module.exports = magicIndex;
