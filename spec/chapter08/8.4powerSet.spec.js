@@ -4,6 +4,5 @@ describe('Power Set', () => {
     it('should return all the subsets of the set.', () => {
         // expect(powerSet(['a','b','c'])).toContain()
         let x = powerSet(['a', 'b', 'c']);
-        console.log(x);
     });
 });
