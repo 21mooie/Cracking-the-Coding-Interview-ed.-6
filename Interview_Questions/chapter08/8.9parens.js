@@ -37,13 +37,11 @@ const parensOther = (n) => {
         }
         if(left > 0){
             const newString = string+'(';
-            const leftMinusOne = left-1;
-            recurse(leftMinusOne, right, newString);
+            recurse(left-1, right, newString);
         }
         if(left < right){
             const newString = string+')';
-            const rightMinusOne = right-1;
-            recurse(left, rightMinusOne, newString);
+            recurse(left, right-1, newString);
         }
     }
     recurse(n, n, '');
