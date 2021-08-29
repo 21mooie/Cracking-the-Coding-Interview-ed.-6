@@ -4,7 +4,7 @@ describe('Coins', () => {
     it('should return the number of ways to generate the given coin amount.', () => {
         expect(naiveCoins(10)).toEqual(4);
     });
-    fit('should return the number of ways to generate the given coin amount when memoized.', () => {
+    it('should return the number of ways to generate the given coin amount when memoized.', () => {
         expect(memoCoins(10)).toEqual(4);
     });
 });
