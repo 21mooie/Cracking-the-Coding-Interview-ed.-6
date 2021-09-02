@@ -1,0 +1,27 @@
+Cache: Imagine a web server for a simplified search engine.
+This system has 100 machines to respond to search queries,
+which may then call out using processSearch(string query) to another cluster of machines to actually get the result.
+The machine which responds to a given query is chosen at random,
+so you cannot guarantee that the same machine will always respond to the same request.
+The method processSearch is very expensive.
+Design a caching mechanism for the most recent queries.
+Be sure to explain how you would update the cache when data changes.
+
+The cache works as follows, when a request comes into the 100 responding machines,
+the request then goes to the lookup cache mechanism to see if the query is cached.
+If not, the call to processSearch will return the answer, this result is then updated in the cache.
+If the cache is full, this means the oldest cached value will be removed. In order to update the cache,
+when the data that will be returned by processSearch updates, find if the corresponding data affects anything in the cache.
+If this is the case, remove it from the cache or update it manually. Either option works.
+The cache will be implemented as a hashtable with key value pairs of query to linkedlists.
+The linkedlists would be the different responses to the query.
+
+Another interesting approach is to use a hashtable and linkedlist in the following way. The hashtable will map from query
+to a linked list node containing the query result. The linkedlist will be the nodes of the cached results with the most recent
+being the head. Once the list exceeds a certain amount, remove the tail. Something to consider is whether each machine should
+have its own cache. This will introduce duplication so it may be better to instead store the cache in one place.
+Storing the same copy on different machines will make updating all caches turn into an O(n) procedure so this is not the best.
+Instead having each machine hold a portion of the cache works because then when a query comes in you can hash the incoming
+query and then send said query to the right machine and get the response from there. Updating the cache can be handled by
+having a predetermined timeout when to remove an item from the cache or by having another hash table that says which queries
+are tied to which urls. When the urls are updated or changed we can then use that to update the queries in the cache.

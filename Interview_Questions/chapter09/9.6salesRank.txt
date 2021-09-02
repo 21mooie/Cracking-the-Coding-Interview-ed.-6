@@ -1,0 +1,9 @@
+Sales Rank: A large eCommerce company wishes to list the best-selling products, overall and by category.
+For example, one product might be the #1056th best-selling product overall but the #13th best-selling product under
+"Sports Equipment" and the #24th best-selling product under "Safety." Describe how you would design this system.
+
+Linked list where each node is a product but the head represents each category.
+Each node would have to remember its current place in each list it is apart of. Thus this product is #1056 overall, #13 under sports equipment,
+and #24 under safety. If any updates were to happen that a certain node decreases its number, it will reduce itself in the corresponding places it should
+and update the number for each value. A hashmap where each key is the product name and the value is the node will be used to find the category
+each product has.

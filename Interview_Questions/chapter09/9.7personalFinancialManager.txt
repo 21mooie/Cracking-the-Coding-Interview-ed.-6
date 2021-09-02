@@ -1,0 +1,9 @@
+Personal Financial Manager: Explain how you would design a personal financial manager (like Mint.com).
+This system would connect to your bank accounts, analyze your spending habits, and make recommendations.
+
+To start, you need to define which banks will be accommodated. These banks will have different apis that you will need to implement in order
+to talk to them and get the bank account information you are interested in. Once this is set up properly, the bank account information
+should be run through an AI that determines classifications on what kind of spending this user does. When they spend, what they spend their money on,
+how frivolous it is, if it puts their bank account in jeapordy, how it tracks compared to their income, etc.
+This AI will determine these classifications and come up with different recommendations based on this information.
+Based on these recommendations, we would give the user different advice.
