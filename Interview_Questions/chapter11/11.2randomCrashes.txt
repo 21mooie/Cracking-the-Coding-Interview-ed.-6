@@ -1,0 +1,9 @@
+Random Crashes: You are given the source to an application which crashes when it is run.
+After running it ten times in a debugger, you find it never crashes in the same place.
+The application is single threaded, and uses only the C standard library.
+What programming errors could be causing this crash? How would you test each one?
+
+I would test to find what function or sequence is invoking the crash. This test is something that I would do to find a commonality.
+Once you have this determined then you can proceed with fixing the error because even though the app
+never crashes at the same place during usage, the application must be invoking similar code that is causing
+crashes or the data being sent to functions while changing is invoking an error.

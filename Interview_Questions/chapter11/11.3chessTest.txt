@@ -1,0 +1,14 @@
+Chess Test: We have the following method used in a chess game: boolean canMoveTo( int x, int y).
+ThismethodispartofthePieeeclassandreturnswhetherornotthepiececanmoveto position (x, y).
+Explain how you would test this method.
+
+You can test this by initiating chess pieces and giving them positions and seeing if the returned boolean
+matches what should be the case based from the piece type and its current location.
+For example, you can start with standard tests like if a pawn can move one space forward and confirming it
+cannot move backwards. Then you can test special scenarios like when there are other pieces on the board.
+Pawns can only move diagonally when there is a piece there to be taken so this should be tested.
+Things of this scenario should be tested. Also if another of your pieces are at the position
+you would like to move to, then you won't be able to move there. One test you need to do as well is any
+moves which would put you into check. The rules of chess disallow that so this would require the piece
+to have knowledge about any impending checks that could result from a move. Last one edge case should be to
+confirm that you can't move to a position you are currently at. This isn't valid in chess.

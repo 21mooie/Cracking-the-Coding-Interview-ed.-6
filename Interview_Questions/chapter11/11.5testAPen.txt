@@ -1,0 +1,13 @@
+Test a Pen: How would you test a pen?
+
+Who will this pen be used by? 
+    Is it anyone? Is it children? Is it a certain kind of professional?
+What are use cases? 
+    Is this pen meant to be used only on paper? Should it be able to write well on leather?
+    What kind of ink should it produce? Should the ink be dried by a certain time etc.
+What are bound of use?
+    How long should the ink be good for? Should the ink bleed through paper or not? How smudge
+    resistent should it be? How about the feel? How should it feel in your hand?
+What are the stress/failure situations?
+    Is it a failure if the pen doesn't work after being in the freezer?
+    Should the pen be able to withstand being sat on? Under no circumstances should the pen burst?

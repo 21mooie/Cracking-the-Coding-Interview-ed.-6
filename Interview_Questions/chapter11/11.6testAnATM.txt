@@ -1,0 +1,15 @@
+Test an ATM: How would you test an ATM in a distributed banking system?
+
+Who is using?
+    customer
+
+Use case?
+    view balance, withdraw money, deposit money
+
+bounds of use?
+    we should be able to use 24 hrs per day and should work. 
+
+stress/failure?
+    should not allow more money to be taken out than in account
+    should not show account without proper validation confirmed
+    

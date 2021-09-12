@@ -1,0 +1,7 @@
+No Test Tools: How would you load test a webpage without using any test tools?
+
+Load testing is assessed through speed at which the page is able to load.
+What assets are taking the most time to be sent and what are the bundle sizes.
+Without tools, I would ask how long the page is taking to render overall.
+If it is under the sla then that is a good thing which means we are meeting our agreement.
+Regardless to do some analysis,
